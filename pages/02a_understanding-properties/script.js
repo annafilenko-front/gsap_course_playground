@@ -1,6 +1,8 @@
 import gsap from "gsap";
 
-gsap.to('.box',{
+const repeat = document.querySelector('.repeat')
+
+const animation = gsap.to('.box',{
   duration: 2,
   scale: 1,
   borderRadius: '50%',
@@ -8,4 +10,8 @@ gsap.to('.box',{
   ease: 'bounce.inOut',
   repeat: 1,
   yoyo: true
+})
+
+repeat.addEventListener('click', () => {
+  animation.restart()
 })
