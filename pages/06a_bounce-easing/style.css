@@ -1,0 +1,17 @@
+.content{
+  display: flex;
+  flex-direction: column;
+}
+
+.tennis-ball{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #CCFF00;
+  cursor: grab;
+  touch-action: none;
+}
+
+.tennis-ball:active {
+  cursor: grabbing;
+}
