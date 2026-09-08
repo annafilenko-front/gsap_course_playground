@@ -14,20 +14,38 @@ let hasDockEntered = false;       // Tracks if the dock has been hovered at leas
 
 const showDock = () => {
   isDockVisible = true;
+  isReadyForHover = true;
 
   gsap.to(dock, {
     y: -155,
     duration: 0.4,
     ease: 'power2.out',
   });
+
+  gsap.to(icons, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.4,
+    stagger: 0.05,
+    ease: "back.out(1.7)",
+  });
 };
 
 const hideDock = () => {
   isDockVisible = false;
+  isReadyForHover = false;
 
   gsap.to(dock, {
     y: 0,
     duration: 0.35,
+    ease: "power2.in",
+  });
+
+  gsap.to(icons, {
+    opacity: 0,
+    scale: 0,
+    duration: 0.25,
+    stagger: 0.03,
     ease: "power2.in",
   });
 };
@@ -77,8 +95,12 @@ dock.addEventListener("mousemove", (e) => {
     const distance = Math.abs(centerX - (iconCenter - rect.left));
     const maxDistance = 120;
 
-    const scale = Math.max(1, 1.7 - distance / maxDistance);
+    const scale = Math.max(1, 1.3 - distance / maxDistance);
 
-    // We'll animate this part using GSAP later
+    gsap.to(icon, {
+      scale,
+      duration: 0.2,
+      ease: "power2.out",
+    });
   });
 });
